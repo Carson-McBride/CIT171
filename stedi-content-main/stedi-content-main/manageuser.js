@@ -21,6 +21,18 @@ function setphonenumber(){
     phoneNumber = $("#phoneNumber").val();
 }
 
+function sendtext() {
+    setphonenumber();
+    $.ajax({
+        type: "POST",
+        url: `https://dev.stedi.me/twofactorlogin/` +phoneNumber,
+        contentType: "application/text",
+        dataType: 'text'
+    })
+
+}
+
+
 
 function setverifypassword(){
     verifypassword = $("#verifypassword").val();
@@ -128,16 +140,7 @@ var enterFunction = (event) =>{
     }
 }
 
-function sendtext() {
-    setphonenumber();
-    $.ajax({
-        type: "POST",
-        url: `https://dev.stedi.me/twofactorlogin/` +phoneNumber,
-        contentType: "application/text",
-        dataType: 'text'
-            })
 
-        }
 var passwordField = document.getElementById("password");
 
 passwordField.addEventListener("keyup", enterFunction);
